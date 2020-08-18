@@ -29,16 +29,16 @@ Things you may want to cover:
 
 ## users テーブル（Devise）
 
-| Column            | Type   | Options     |
-| ----------------- | ------ | ----------- |
-| nickname          | string | null: false |
-| family_name       | string | null: false |
-| first_name        | string | null: false |
-| family_name_kana  | string | null: false |
-| first_name_kana   | string | null: false |
-| birthday          | date   | null: false |
-| email             | string | null: false |
-| password          | string | null: false |
+| Column            | Type   | Options                   |
+| ----------------- | ------ | ------------------------- |
+| nickname          | string | null: false, unique: true |
+| family_name       | string | null: false               |
+| first_name        | string | null: false               |
+| family_name_kana  | string | null: false               |
+| first_name_kana   | string | null: false               |
+| birthday          | date   | null: false               |
+| email             | string | null: false               |
+| password          | string | null: false               |
 
 ### Association
 
