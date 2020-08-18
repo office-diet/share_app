@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_18_032824) do
+ActiveRecord::Schema.define(version: 2020_08_18_033758) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -59,6 +59,17 @@ ActiveRecord::Schema.define(version: 2020_08_18_032824) do
     t.index ["product_id"], name: "index_products_genres_on_product_id"
   end
 
+  create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "satar", null: false
+    t.text "text", null: false
+    t.bigint "product_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_reviews_on_product_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "family_name", null: false
@@ -81,4 +92,6 @@ ActiveRecord::Schema.define(version: 2020_08_18_032824) do
   add_foreign_key "cards", "users"
   add_foreign_key "items", "products"
   add_foreign_key "products_genres", "products"
+  add_foreign_key "reviews", "products"
+  add_foreign_key "reviews", "users"
 end

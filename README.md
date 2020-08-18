@@ -134,7 +134,7 @@ Things you may want to cover:
 
 | Column      | Type        | Options                        |
 | ----------- | ----------- | ------------------------------ |
-| starts      | integer     | null: false                    |
+| start       | integer     | null: false                    |
 | text        | string      | null: false (ActiveHash)       |
 | products_id | references  | null: false, foreign_key: true |
 | user_id     | references  | null: false, foreign_key: true |
