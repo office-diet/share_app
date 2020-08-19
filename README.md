@@ -83,12 +83,13 @@ Things you may want to cover:
 | ------- | ------- | ----------- |
 | name    | string  | null: false |
 | image   | string  | null: false |
-* 将来的には、imageはActiveHashで実装
+* imageは将来、ActiveStorageで実装
 
 ### Association
 
 - has_many :items
-- has_many :products_genre
+- has_many :products_genres
+- has_many :genres, through :products_genres
 - has_many :reviews
 
 ## items テーブル
@@ -124,11 +125,23 @@ Things you may want to cover:
 | Column      | Type        | Options                        |
 | ----------- | ----------- | ------------------------------ |
 | products_id | references  | null: false, foreign_key: true |
-| genre_id    | integer     | null: false (ActiveHash)       |
+| genre_id    | references  | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :products
+- belongs_to :genre
+
+## genre テーブル
+
+| Column  | Type    | Options     |
+| ------- | ------- | ----------- |
+| name    | string  | null: false |
+
+### Association
+
+- has_many :products_genres
+- has_many :products, throuth :products_genres
 
 ## reviews テーブル
 
