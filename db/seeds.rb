@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+strNum = ""
+87.times do |x|
+  strNum = "00#{x + 1}"
+  strNum = strNum.slice(strNum.length - 3, 3)
+  Product.create(name: "テストブック#{strNum}", image: "#{strNum}.jpg")
+end
