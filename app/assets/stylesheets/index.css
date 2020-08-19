@@ -1,0 +1,23 @@
+.products {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250px;
+  height: 250px;
+}
+
+img {
+  height: 200px;
+  width: auto;
+}

@@ -1,0 +1,17 @@
+
+
+<div class="products">
+  <div class="grid">
+    <% @products.each do |product| %>
+      <div class="product">
+        <div class="image">
+          <%= image_tag product.image %>
+        </div>
+        <div class="name">
+          <%= product.name %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= paginate @products %>
+</div>

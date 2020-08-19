@@ -56,3 +56,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'pry-rails'
 gem 'active_hash'
+
+# paginate https://qiita.com/rio_threehouse/items/313824b90a31268b0074
+gem 'kaminari'
