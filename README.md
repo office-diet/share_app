@@ -89,7 +89,7 @@ Things you may want to cover:
 
 - has_many :items
 - has_many :products_genres
-- has_many :genres, through :products_genres
+- has_many :genres, through: :products_genres
 - has_many :reviews
 
 ## items テーブル
@@ -141,7 +141,7 @@ Things you may want to cover:
 ### Association
 
 - has_many :products_genres
-- has_many :products, throuth :products_genres
+- has_many :products, through: :products_genres
 
 ## reviews テーブル
 

@@ -1,8 +1,10 @@
 class Product < ApplicationRecord
   has_many :items
-  has_many :products_genres
   has_many :reviews
-  extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :genre, through: :products_genres
+  has_many :products_genres
+  has_many :genre, through: :products_genres
 
+  with_options presence: true do
+    validates :name, :image
+  end
 end
