@@ -44,7 +44,7 @@ Things you may want to cover:
 
 - has_many :cards
 - has_many :address
-- has_many :rents
+- has_many :sends
 - has_many :reviews
 
 ## addresses テーブル
@@ -63,7 +63,7 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
-- has_many :rents
+- has_many :sends
 
 ## cards テーブル
 
@@ -97,21 +97,21 @@ Things you may want to cover:
 | ------------- | ----------- | ------------------------------ |
 | condition_id  | integer     | null: false (ActiveHash)       |
 | text          | string      | null: false                    |
-| goods_id      | references  | null: false, foreign_key: true |
+| product_id    | references  | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :good
-- has_many: rents
+- belongs_to :product
+- has_many :sends
 
-## rents テーブル
+## sends テーブル
 
-| Column      | Type        | Options                        |
-| ----------- | ----------- | ------------------------------ |
-| return      | boolean     | default: false                 |
-| item_id     | references  | null: false, foreign_key: true |
-| user_id     | references  | null: false, foreign_key: true |
-| address_id  | references  | null: false, foreign_key: true |
+| Column        | Type        | Options                        |
+| ------------- | ----------- | ------------------------------ |
+| item_id       | references  | null: false, foreign_key: true |
+| user_id       | references  | null: false, foreign_key: true |
+| address_id    | references  | null: false, foreign_key: true |
+| return(予備)  | boolean     | default: false                 |
 
 ### Association
 
