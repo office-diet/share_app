@@ -3,10 +3,10 @@
     <% @products.each do |product| %>
       <div class="product">
         <div class="image">
-          <%= image_tag product.image %>
+          <%= link_to image_tag(product.image), product_items_path(product.id) %>
         </div>
         <div class="name">
-          <%= product.name %>
+          <%= link_to product.name, product_items_path(product.id) %>
         </div>
       </div>
     <% end %>

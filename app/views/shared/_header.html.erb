@@ -1,11 +1,24 @@
 <header>
   <div class="container">
     <div class="site-name">
-      share
+      <%= link_to "share", root_path %>
     </div>
-    <%= form_with url: search_products_path, method: :get, local: true do |f| %>
-      <%= f.text_field :key %>
-      <%= f.submit "検索" %>
-    <% end %>
+    <div class="search-form">
+      <%= form_with url: search_products_path, method: :get, local: true do |f| %>
+        <%= f.text_field :key, class: "search-input" %>
+        <%= f.submit "検索 ", class: "search-btn" %>
+      <% end %>
+    </div>
+    <div class="account">
+      <ul>
+      <% if user_signed_in? %>
+        <li><%= link_to current_user.nickname, "#" %></li>
+        <li><%= link_to "ログアウト", destroy_user_session_path %></li>
+      <% else %>
+        <li><%= link_to "ログイン", new_user_session_path %></li>
+        <li><%= link_to "新規登録", new_user_registration_path %></li>
+      <% end %>
+      </ul>
+    </div>
   </div>
 </header>

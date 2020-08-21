@@ -1,0 +1,10 @@
+<%= render 'shared/header'%>
+<div class="main">
+  <%= render 'shared/side'%>
+  <%= @product.name %>
+  <%= image_tag @product.image %>
+  <% @items.each do |item| %>
+    <%= item.condition.name %>
+    <%= item.text %>
+  <% end %>
+</div>

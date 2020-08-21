@@ -66,18 +66,6 @@ ActiveRecord::Schema.define(version: 2020_08_19_031316) do
     t.index ["product_id"], name: "index_products_genres_on_product_id"
   end
 
-  create_table "rents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "item_id", null: false
-    t.bigint "user_id", null: false
-    t.bigint "address_id", null: false
-    t.boolean "return", default: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["address_id"], name: "index_rents_on_address_id"
-    t.index ["item_id"], name: "index_rents_on_item_id"
-    t.index ["user_id"], name: "index_rents_on_user_id"
-  end
-
   create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "satar", null: false
     t.text "text", null: false
@@ -123,9 +111,6 @@ ActiveRecord::Schema.define(version: 2020_08_19_031316) do
   add_foreign_key "cards", "users"
   add_foreign_key "items", "products"
   add_foreign_key "products_genres", "products"
-  add_foreign_key "rents", "addresses"
-  add_foreign_key "rents", "items"
-  add_foreign_key "rents", "users"
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users"
   add_foreign_key "sends", "addresses"
