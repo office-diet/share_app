@@ -46,6 +46,7 @@ Things you may want to cover:
 - has_many :address
 - has_many :sends
 - has_many :reviews
+- has_many :carts
 
 ## addresses テーブル
 
@@ -104,6 +105,7 @@ Things you may want to cover:
 
 - belongs_to :product
 - has_many :sends
+- has_many :carts
 
 ## sends テーブル
 
@@ -156,4 +158,17 @@ Things you may want to cover:
 
 - belongs_to :product
 - belongs_to :user
+
+## carts テーブル
+
+| Column  | Type        | Options                        |
+| ------- | ----------- | ------------------------------ |
+| user_id | references  | null: false, foreign_key: true |
+| item_id | references  | null: false, foreign_key: true |
+| buy     | boolean     | default: true                  |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
 

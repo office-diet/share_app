@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :cards
   has_many :sends
   has_many :reviews
+  has_many :carts
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
   JAPANESE_REGEX = /\A[ぁ-んァ-ン一-龥]/.freeze
