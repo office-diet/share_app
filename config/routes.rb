@@ -5,8 +5,6 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'addresses', to: 'users/registrations#new_address'
     post 'addresses', to: 'users/registrations#create_address'
-    get 'cards', to: 'users/registrations#new_card'
-    post 'cards', to: 'users/registrations#create_card'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -15,7 +13,8 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
-    resources :items, only: [:index]
+    resources :items, only: [:index, :show]
   end
 
+  resources :sends, only: [:new, :create]
 end

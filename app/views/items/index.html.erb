@@ -1,10 +1,22 @@
 <%= render 'shared/header'%>
 <div class="main">
   <%= render 'shared/side'%>
-  <%= @product.name %>
-  <%= image_tag @product.image %>
-  <% @items.each do |item| %>
-    <%= item.condition.name %>
-    <%= item.text %>
-  <% end %>
+  <div class="items">
+    <div class="product-name">
+      <%= @product.name %>
+    </div>
+    <div class="product-image">
+      <%= image_tag @product.image %>
+    </div>
+    <% @items.each do |item| %>
+      <div class="item">
+        <div class="item-condition">
+          <%= link_to "#{item.condition.name} ワンクリックでお届け！", product_item_path( item.id, product_id: @product.id )%>
+        </div>
+        <div class="item-text">
+          <%= item.text %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

@@ -6,7 +6,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def new
     @user = User.new
-    binding.pry
   end
 
   def create
@@ -23,27 +22,34 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create_address
     @address = Address.new(address_params)
     unless @address.valid?
-      render :new_address
-    end   
-    session["devise.address_data"] = {address: @address.attributes}
-    render :new_card
-  end
- 
-  def create_card
-    @card = Card.new(card_params)
-     unless @address.valid?
-       render :new_address
-     end
-    @user.build_address(@address.attributes)
-    @user.save
+      render :new_address and return
+    end
+    unless params[:card_token]
+      render :new_address and return
+    end
+
+    user = User.create(session["devise.regist_data"]["user"])
+    address = Address.create(address_params.merge( user_id: user.id ))
+    
+    Payjp.api_key = ENV["PAYJP_SECURITY_KEY"] 
+    customer = Payjp::Customer.create(
+      description: 'test', 
+      card: params[:card_token] 
+    )    
+    card = Card.create( # トークン化されたカード情報を保存する
+      card_token: params[:card_token], # カードトークン
+      customer_token: customer.id, # 顧客トークン
+      user_id: user.id # ログインしているユーザー
+    )
+    sign_in(:user, user)
     session["devise.regist_data"]["user"].clear
-    sign_in(:user, @user)
-  end  
+    redirect_to root_path
+  end
 
   protected
  
   def address_params
-    params.require(:address).permit(:postal_code, :address)
+    params.permit(:postal_code, :prefecture_id, :town, :address, :building, :tel).merge(name: "#{session["devise.regist_data"]["user"]["family_name"]} #{session["devise.regist_data"]["user"]["first_name"]}")
   end
 
   # GET /resource/sign_up
