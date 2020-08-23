@@ -11,7 +11,7 @@
     <% @items.each do |item| %>
       <div class="item">
         <div class="item-condition">
-          <%= link_to "#{item.condition.name} ワンクリックでお届け！", product_item_path( item.id, product_id: @product.id )%>
+          <%= link_to "#{item.condition.name} カートに追加！", { controller: :carts, action: :create, item_id: item.id }, method: :post %>
         </div>
         <div class="item-text">
           <%= item.text %>

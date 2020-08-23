@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   end
 
   resources :sends, only: [:new, :create]
+  resources :carts, only: [:index, :create, :destroy, :update]
 end
