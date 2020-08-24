@@ -1,0 +1,39 @@
+<%= render 'shared/header'%>
+<div class="main">
+  <%= render 'shared/side'%>
+  <div class="carts">
+
+    <hr>
+    <div class="cart-title">
+      配送先選択
+    </div>
+    <hr>
+
+    <% @addresses.each do |address| %>
+      <%= address.name %>
+      <%= address.postal_code %>
+      <%= address.prefecture.name %>
+      <%= address.town %>
+      <%= address.address %>
+      <%= address.building %>
+      <%= address.tel %>
+      <%= link_to "こちらに配送", { controller: :sends, action: :create, address_id: address.id }, method: :post %>
+    <% end %>
+    <hr>
+    <div class="cart-title">
+      配送商品
+    </div>
+    <hr>
+    <% @cart_items.each do |item| %>
+      <div class="cart-item">
+        <%= image_tag item.item.product.image %>
+        <%= item.item.product.name %>
+        <%= item.item.condition.name %>
+        <%= item.item.text %>
+        <%= link_to "削除", cart_path(item.id), method: :delete  %>
+        <%= link_to "今は購入しない", cart_path(item.id, buy: item.buy), method: :patch %>
+      </div>
+    <% end %>
+
+  </div>
+</div>

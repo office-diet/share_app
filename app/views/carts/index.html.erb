@@ -5,7 +5,11 @@
 
     <hr>
     <div class="cart-title">
-      カート　<%= link_to "購入", new_send_path %>
+      <% if @cart_items.where(buy: true).count > 0  %>
+        カート　<%= link_to "配送", new_send_path %>　<%= link_to "履歴・返送", sends_path %>
+      <% else %>
+        カート　<%= link_to "履歴・返送", sends_path %>
+      <% end %>
     </div>
     <hr>
 

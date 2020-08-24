@@ -4,7 +4,4 @@ class ItemsController < ApplicationController
     @items = Item.where(product_id: params[:product_id])
   end
 
-  def show
-    binding.pry
-  end
 end

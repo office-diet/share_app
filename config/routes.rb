@@ -13,9 +13,9 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
-    resources :items, only: [:index, :show]
+    resources :items, only: [:index]
   end
 
-  resources :sends, only: [:new, :create]
+  resources :sends, only: [:index, :new, :create, :update]
   resources :carts, only: [:index, :create, :destroy, :update]
 end
