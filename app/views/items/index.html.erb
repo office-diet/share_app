@@ -9,14 +9,16 @@
       <%= image_tag @product.image %>
     </div>
     <% @items.each do |item| %>
-      <div class="item">
-        <div class="item-condition">
-          <%= link_to "#{item.condition.name} カートに追加！", { controller: :carts, action: :create, item_id: item.id }, method: :post %>
+      <% unless item.sends.present? %>
+        <div class="item">
+          <div class="item-condition">
+            <%= link_to "#{item.condition.name} カートに追加！", { controller: :carts, action: :create, item_id: item.id }, method: :post %>
+          </div>
+          <div class="item-text">
+            <%= item.text %>
+          </div>
         </div>
-        <div class="item-text">
-          <%= item.text %>
-        </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </div>

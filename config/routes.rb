@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :items, only: [:index]
   end
 
-  resources :sends, only: [:index, :new, :create, :update]
+  resources :reviews, only: [:index, :create, :edit, :update, :destroy]
   resources :carts, only: [:index, :create, :destroy, :update]
+  resources :sends, only: [:index, :new, :create]
 end

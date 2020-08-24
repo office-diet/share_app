@@ -6,9 +6,9 @@
     <hr>
     <div class="cart-title">
       <% if @cart_items.where(buy: true).count > 0  %>
-        カート　<%= link_to "配送", new_send_path %>　<%= link_to "履歴・返送", sends_path %>
+        カート　<%= link_to "配送", new_send_path %>　<%= link_to "履歴", sends_path %>
       <% else %>
-        カート　<%= link_to "履歴・返送", sends_path %>
+        カート　<%= link_to "履歴", sends_path %>
       <% end %>
     </div>
     <hr>
@@ -20,7 +20,7 @@
         <%= item.item.condition.name %>
         <%= item.item.text %>
         <%= link_to "削除", cart_path(item.id), method: :delete  %>
-        <%= link_to "今は購入しない", cart_path(item.id, buy: item.buy), method: :patch %>
+        <%= link_to "今は入手しない", cart_path(item.id, buy: item.buy), method: :patch %>
       </div>
     <% end %>
 

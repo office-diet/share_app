@@ -9,21 +9,9 @@
     </div>
     <hr>
 
-    <% @sends_items.where(return: false).each do |send| %>
+    <% @sends_items.each do |send| %>
       <div>
-        <%= send.item.product.name %>　　<%= link_to "返送", send_path(send.id), method: :patch %>
-      </div>
-    <% end %>
-
-    <hr>
-    <div class="cart-title">
-      返送済み商品
-    </div>
-   <hr>
-
-    <% @sends_items.where(return: true).each do |send| %>
-      <div>
-        <%= send.item.product.name %>　　返送済み
+        <%= send.item.product.name %>
       </div>
     <% end %>
 

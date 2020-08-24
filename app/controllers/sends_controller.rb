@@ -19,9 +19,4 @@ class SendsController < ApplicationController
     redirect_to root_path
   end
 
-  def update
-    send = Send.find(params[:id])
-    send.update(return: true)
-    redirect_to sends_path
-  end
 end
