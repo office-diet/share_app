@@ -60,3 +60,7 @@ gem 'active_hash'
 # paginate https://qiita.com/rio_threehouse/items/313824b90a31268b0074
 gem 'kaminari'
 gem 'payjp'
+
+group :production do
+  gem 'rails_12factor'
+end
