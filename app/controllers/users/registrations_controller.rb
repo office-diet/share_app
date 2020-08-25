@@ -42,7 +42,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       user_id: user.id # ログインしているユーザー
     )
     sign_in(:user, user)
-    session["devise.regist_data"]["user"].clear
+    # session["devise.regist_data"]["user"].clear
     redirect_to root_path
   end
 

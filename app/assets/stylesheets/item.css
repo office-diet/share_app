@@ -32,3 +32,29 @@
   border-radius: 0 0 5px 5px;
   min-height: 30px;
 }
+
+.product-image {
+  display: flex;
+}
+
+.review {
+  padding-left: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  display: block;
+}
+
+.title {
+  width: 500px;
+}
+
+.text {
+  width: 500px;
+}
+
+.btn {
+  display: block;
+}

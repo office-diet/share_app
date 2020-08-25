@@ -14,9 +14,9 @@ Rails.application.routes.draw do
       get 'search'
     end
     resources :items, only: [:index]
+    resources :reviews, only: [:index, :create, :update, :destroy]
   end
 
-  resources :reviews, only: [:index, :create, :edit, :update, :destroy]
   resources :carts, only: [:index, :create, :destroy, :update]
   resources :sends, only: [:index, :new, :create]
 end

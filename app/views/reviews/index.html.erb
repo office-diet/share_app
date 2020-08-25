@@ -1,0 +1,61 @@
+<%= render 'shared/header'%>
+<div class="main">
+  <%= render 'shared/side'%>
+  <div class="items">
+    <div class="product-name">
+      <%= @product.name %>
+    </div>
+    <div class="product-image">
+      <%= image_tag @product.image %>
+      <% if user_signed_in? %>
+        <div class="review">
+          <% if @reviews.where(user_id: current_user.id).present? %>
+            <% review = @reviews.where(user_id: current_user.id).first %>
+            <%= form_with model: review, url: product_review_path(id: review.id), method: :patch, local: true  do |f| %>
+              <%= f.label :star, "評価", class: "label"%>
+              <%= f.text_field :star, value: review.star %>
+              <%= f.label :title, "タイトル", class: "label" %>
+              <%= f.text_field :title, value: review.title, class: "title" %>
+              <%= f.label :text, "本文", class: "label" %>
+              <%= f.text_area :text, value: review.text, class: "text" %>
+              <%= f.submit "レビューを更新する", class: "btn" %>
+            <% end %>
+          <% else %>
+            <%= form_with model: Review.new, url: product_reviews_path, local: true  do |f| %>
+              <%= f.label :star, "評価", class: "label"%>
+              <%= f.text_field :star %>
+              <%= f.label :title, "タイトル", class: "label" %>
+              <%= f.text_field :title, class: "title" %>
+              <%= f.label :text, "本文", class: "label" %>
+              <%= f.text_area :text, class: "text" %>
+              <%= f.submit "レビューを投稿", class: "btn" %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <% if user_signed_in?%>
+      <% @reviews.where.not(user_id: current_user.id).each do |review| %>
+        <div class="item">
+          <div class="item-condition">
+            <%= "評価：#{review.star}　#{review.title}　（#{review.user.nickname}　#{review.updated_at.to_date})" %>
+          </div>
+          <div class="item-text">
+            <%= review.text %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <% @reviews.each do |review| %>
+        <div class="item">
+          <div class="item-condition">
+            <%= "評価：#{review.star}　#{review.title}　（#{review.user.nickname}　#{review.updated_at.to_date})" %>
+          </div>
+          <div class="item-text">
+            <%= review.text %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

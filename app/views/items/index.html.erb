@@ -8,6 +8,9 @@
     <div class="product-image">
       <%= image_tag @product.image %>
     </div>
+    <div class="review">
+      評価：<%= link_to "#{@product.reviews.average(:star)}（#{@product.reviews.count}件）", product_reviews_path(@product.id) %>
+    </div>
     <% @items.each do |item| %>
       <% unless item.sends.present? %>
         <div class="item">

@@ -60,12 +60,24 @@ books.each_with_index do |book, index|
   Product.create(name: book, image: "#{strNum}.jpg")
 end
 
+User.create(nickname: "aaa", email: "aaa@aaa", family_name: "あああ", first_name: "あああ", family_name_kana: "アアア", first_name_kana: "アアア", birthday: "1990-01-01", password: "aaa111")
+User.create(nickname: "bbb", email: "bbb@bbb", family_name: "いいい", first_name: "いいい", family_name_kana: "イイイ", first_name_kana: "イイイ", birthday: "1990-01-01", password: "bbb222")
+User.create(nickname: "ccc", email: "ccc@ccc", family_name: "ううう", first_name: "ううう", family_name_kana: "ウウウ", first_name_kana: "ウウウ", birthday: "1990-01-01", password: "ccc333")
+User.create(nickname: "ddd", email: "ddd@ddd", family_name: "えええ", first_name: "えええ", family_name_kana: "エエエ", first_name_kana: "エエエ", birthday: "1990-01-01", password: "ddd444")
+User.create(nickname: "eee", email: "eee@eee", family_name: "おおお", first_name: "おおお", family_name_kana: "オオオ", first_name_kana: "オオオ", birthday: "1990-01-01", password: "eee555")
+
 87.times do |index|
   id = index + 1
-  Item.create(condition_id: 1, text: "テスト", product_id: id)
-  Item.create(condition_id: 2, text: "テスト", product_id: id)
-  Item.create(condition_id: 3, text: "テスト", product_id: id)
-  Item.create(condition_id: 4, text: "テスト", product_id: id)
-  Item.create(condition_id: 5, text: "テスト", product_id: id)
-  Item.create(condition_id: 6, text: "テスト", product_id: id)
+  Item.create(condition_id: rand(1..6), text: "コンディションを説明します", product_id: id)
+  Item.create(condition_id: rand(1..6), text: "コンディションを説明します", product_id: id)
+  Item.create(condition_id: rand(1..6), text: "コンディションを説明します", product_id: id)
+  Item.create(condition_id: rand(1..6), text: "コンディションを説明します", product_id: id)
+  Item.create(condition_id: rand(1..6), text: "コンディションを説明します", product_id: id)
+  Item.create(condition_id: rand(1..6), text: "コンディションを説明します", product_id: id)
+
+  Review.create(star: rand(1..5), title: "テストレビュー", text: "テストレビュー投稿します。\n数値はランダムにします。", product_id: id, user_id: 1)
+  Review.create(star: rand(1..5), title: "テストレビュー", text: "テストレビュー投稿します。\n数値はランダムにします。", product_id: id, user_id: 2)
+  Review.create(star: rand(1..5), title: "テストレビュー", text: "テストレビュー投稿します。\n数値はランダムにします。", product_id: id, user_id: 3)
+  Review.create(star: rand(1..5), title: "テストレビュー", text: "テストレビュー投稿します。\n数値はランダムにします。", product_id: id, user_id: 4)
+  Review.create(star: rand(1..5), title: "テストレビュー", text: "テストレビュー投稿します。\n数値はランダムにします。", product_id: id, user_id: 5)
 end
